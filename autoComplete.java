@@ -119,15 +119,15 @@ class AutoCompleteSystem{
 
   public void insertWords(List<String> words){
     for (String word : words){
-      provider.insert(word);
+      provider.insert(word.toLowerCase());
     }
   }
   public List<String> suggestWords(Character input){
         if (input != '.'){
           currentString.append(input); //i
-          return provider.suggestWords(currentString.toString()); //i
+          return provider.suggestWords(currentString.toString().toLowerCase()); //i
         } else {
-          provider.insert(currentString.toString());
+          provider.insert(currentString.toString().toLowerCase());
           currentString.setLength(0);
           return Collections.emptyList();
       }
@@ -147,6 +147,7 @@ class Solution {
     words.add("iceland");
     words.add("icecubes");
     words.add("icetruckdriver");
+    words.add("Iceland");
     autoCompleteSystem.insertWords(words);
     
     String word = "icetruck";
